@@ -18,14 +18,14 @@ export default defineConfig({
       '@': path.resolve(__dirname, 'src'), // Use the path.resolve method
     },
   },
-  build: {
-    rollupOptions: {
-      input: {
-        // main: resolvePath('index.html'), // Use the resolvePath function
-        main: path.resolve(process.cwd(), './src/main.jsx'), // Use the resolvePath function
-      },
-    },
-  },
+  // build: {
+  //   rollupOptions: {
+  //     input: {
+  //       // main: resolvePath('index.html'), // Use the resolvePath function
+  //       main: path.resolve(process.cwd(), './src/main.jsx'), // Use the resolvePath function
+  //     },
+  //   },
+  // },
   clearScreen: false,
 });
 
