@@ -1,0 +1,32 @@
+.navigation-navbar {
+    background-color: rgb(67, 41, 214);
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.nav-links {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+}
+
+.nav-links {
+    white-space: nowrap; /* Prevent text wrapping */
+  }
+  
+  .navbar-nav {
+    display: flex !important;
+    justify-content: center;
+    width: 100%;
+  }
+  
+  .nav-item {
+    margin-right: 15px; /* Adjust as needed */
+    flex-shrink: 0; /* Prevent shrinking */
+  }
+
+  @media (max-width: 768px) {
+    .nav-item {
+      margin-right: 10px; /* Adjust margin for smaller screens */
+      font-size: 80%;
+    }
+  }
