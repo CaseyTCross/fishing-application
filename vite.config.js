@@ -18,6 +18,10 @@ export default defineConfig({
       '@': path.resolve(__dirname, 'src'), // Use the path.resolve method
     },
   },
+  build: {
+    outdir: 'dist',
+    assetsDir: '',
+  },
   // build: {
   //   rollupOptions: {
   //     input: {
