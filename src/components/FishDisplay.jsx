@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Image, Card, Button, Carousel, Modal } from "react-bootstrap";
 import Table from 'react-bootstrap/Table';
-
+import './FishDisplay.css';
 
 
 
@@ -27,7 +27,7 @@ function FishDisplay({ fishObject }) {
 
     return (
         <>
-            <Card style={{ width: '30%', margin: '0 auto',  }}>
+            <Card className="responsive-card" style={{  margin: '0 auto',  }}>
                 <Table striped bordered hover>
                     <thead>
                         <tr>
