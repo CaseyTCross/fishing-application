@@ -9,6 +9,7 @@ function resolvePath(relativePath) {
 }
 
 export default defineConfig({
+  base: '/',
   plugins: [
     react(),
     // inject({ Buffer: ['buffer', 'Buffer'] }), // Inject the Buffer module
