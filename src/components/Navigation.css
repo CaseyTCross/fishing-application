@@ -1,5 +1,14 @@
+.navigation-navbar .nav-links {
+  color: rgb(255, 255, 255); /* Set the text color for navbar links */
+  text-decoration: none;
+}
+.navigation-navbar .nav-links:hover {
+  color: rgba(255, 255, 255, 0.575); /* Set the text color for navbar links */
+  text-decoration: none;
+}
+
 .navigation-navbar {
-    background-color: rgb(67, 41, 214);
+    background-color: #1d2430;
     text-align: center;
     padding-top: 10px;
     padding-bottom: 10px;

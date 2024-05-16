@@ -3,6 +3,7 @@
 import  { useState, useEffect } from 'react';
 import { S3Client, ListObjectsCommand, GetObjectCommand } from "@aws-sdk/client-s3";
 import FishDisplay from '../components/FishDisplay';
+import './AllFish.css';
 
 const s3Client = new S3Client({
     endpoint: "https://nyc3.digitaloceanspaces.com",

@@ -5,15 +5,15 @@ import AddFish from "./pages/AddFish";
 import AllFish from "./pages/AllFish";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navigation from "./components/Navigation";
-import { ThemeProvider } from "react-bootstrap";
+// import { ThemeProvider } from "react-bootstrap";
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import './App.css'
 
 function App() {
   return (
-    <ThemeProvider breakpoints={['lg', 'xxs']} minBreakpoint="xxs">
+    // <ThemeProvider breakpoints={['lg', 'xxs']} minBreakpoint="xxs">
       <Router>
-        <div>
+        <div className="main-app">
           <Navigation />
           <Routes>
             <Route path="/" element={<Recent />} />
@@ -25,7 +25,7 @@ function App() {
         </div>
       </Router>
 
-    </ThemeProvider>
+    // </ThemeProvider>
 
       
   );

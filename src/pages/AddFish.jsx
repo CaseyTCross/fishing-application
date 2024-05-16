@@ -7,6 +7,7 @@ import lakes from "../assets/Lakes";
 import { PutObjectCommand, S3Client } from "@aws-sdk/client-s3";
 import FishermenDropDown from "../components/FishermenDropDown";
 import heic2any from "heic2any";
+import './AddFish.css';
 
 const convertHeicToJpeg = async  (heicFile) => {
   try {
@@ -273,67 +274,79 @@ function AddFish() {
 
   return (
     <>
-      <Form id="submitForm" onSubmit={handleSubmit}>
+      <Form id="submitForm" className="main-form" onSubmit={handleSubmit}>
         <br />
+        <div className="images-forms">
         <Form.Group controlId="formFile" className="mb-3">
           <Form.Label>Main Fish Photo</Form.Label>
           <br />
-          <Form.Control name="main-photo" type="file" />
+          <Form.Control name="main-photo" type="file" style={{  }}  />
         </Form.Group>
-        <br />
+        
         <Form.Group name="secondary-photos" controlId="formFileMultiple" className="mb-3">
           <Form.Label>Extra Optional Photos</Form.Label>
           <br />
           <Form.Control name="secondary-photos" type="file" multiple />
         </Form.Group>
+        
+        </div>
+        
+        <div className="dropdowns">
+        <Form.Label>Lake Name</Form.Label>
+        <LakesDropDown className="dropdown-component" name="lake" onChange={handleLakeDropDown}  />
         <br />
-        <LakesDropDown name="lake" onChange={handleLakeDropDown}  />
+        <Form.Label>Fish Type</Form.Label>
+        <FishTypesDropDown className="dropdown-component" name="fishType" onChange={handleFishTypeDropDown} />
         <br />
+        <Form.Label>Angler</Form.Label>
+        <FishermenDropDown className="dropdown-component" name="fishermen" onChange={handleFishermenDropDown} />
         <br />
-        <FishTypesDropDown name="fishType" onChange={handleFishTypeDropDown} />
-        <br />
-        <br />
-        <FishermenDropDown name="fishermen" onChange={handleFishermenDropDown} />
-        <br />
-        <br />
+        </div>
+        <div className="fish-details">
         <Form.Label>Lure / Bait Type</Form.Label>
         <br />
         <Form.Control name="lureType" type="text" placeholder="ex: Spinner, Minnow" />
-        <br />
         <br />
         <Form.Label>Lure Color Primary/Secondary</Form.Label>
         <br />
         <Form.Control name="lureColor" type="text" placeholder="ex: Yellow/Red" />
         <br />
-        <br />
         <Form.Label>Length (inches)</Form.Label>
         <br />
         <Form.Control name="length" type="text" placeholder="ex: 14.5" />
-        <br />
         <br />
         <Form.Label>Weight (pounds)</Form.Label>
         <br />
         <Form.Control name="weight" type="text" placeholder="ex: 4.2" />
         <br />
-        <br />
         <Form.Label>Notes / Info</Form.Label>
         <br />
         <Form.Control name="notes" as="textarea" rows={3} />
         <br />
-        <Form.Check
+        </div>
+        <div style={{ display: "flex", justifyContent: "center" }}>
+        <div className="formcheckbox" style={{ textAlign: "center" }}>
+        <Form.Check 
           type="switch"
           id="custom-switch"
           label="Collect Weather Data?"
           name="logWeatherData"
         />
+        </div>
+        </div>
         <Form.Label>
-          *Only Check this if you are still at catch location
+          *Only Check this if you caught the fish today
         </Form.Label>
         <br />
+        <Form.Label>
+          *If you didnt catch within a couple hours leave <br/> note that current weather might be inaccurate
+        </Form.Label>
         <br />
-        <Button variant="primary" type="submit">
+        <Button style={{color: '#000000' }} className="submit-button" variant="primary" type="submit">
           Submit Fish
         </Button>
+        <br/>
+        <br/>
       </Form>
       
     </>

@@ -1,0 +1,68 @@
+.images-forms {
+    /* Common styles for both cases */
+}
+
+/* Styles for screens over 700px */
+@media (min-width: 701px) {
+    .images-forms {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+/* Styles for screens under 700px */
+@media (max-width: 700px) {
+    .images-forms {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+.main-form  {
+    background-color: #4B0082;
+    color: #ffffff;
+    font-size: larger;
+}
+
+.dropdowns {
+    width: 350px;
+    margin: 0 auto;
+    display: block;
+    
+}
+
+.fish-details {
+    width: 350px;
+    margin: 0 auto;
+    display: block;
+}
+
+.main-form input,
+.main-form select,
+.main-form textarea,
+.main-form button {
+  background-color: #d4d1d1; /* Background color for form elements */
+}
+.form-checkbox {
+    text-align: center;
+}
+
+/* Active State */
+.form-check-input + .form-check-label {
+    color: #e70a0a;
+}
+
+
+/* Active State */
+.form-check-input:checked + .form-check-label {
+    color: #09c428;
+}
+
+
+
+
+
