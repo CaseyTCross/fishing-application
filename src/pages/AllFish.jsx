@@ -15,7 +15,7 @@ const s3Client = new S3Client({
       }
 });
 
-function AddFish() {
+function AllFish() {
   const [fishData, setFishData] = useState([]);
 
   useEffect(() => {
@@ -51,10 +51,11 @@ function AddFish() {
   return (
     <div style={{ display: 'flex', flexWrap: 'wrap' }}>
         {fishData.map((fish, index) => (
+          
             <FishDisplay key={index} fishObject={fish}/>
         ))}  
     </div>
   );
 }
 
-export default AddFish;
+export default AllFish;

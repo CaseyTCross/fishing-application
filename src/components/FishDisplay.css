@@ -1,12 +1,27 @@
-@media (min-width: 700px) {
-    .responsive-card {
-      width: 30%;
-    }
-  }
-  
-  @media (max-width: 700px) {
+.card-wrapper {
+  width: 50%;
+  background-color: white;
+}
+
+.table {
+  width: 100%;
+  table-layout: fixed; /* This ensures that the table cells have equal width */
+}
+
+@media (min-width: 851px) {
     .responsive-card {
       width: 100%;
     }
   }
+  
+  @media (max-width: 850px) {
+    .card-wrapper {
+      width: 100%; /* Adjust the width as needed */
+    }
+    .responsive-card {
+      width: 100%;
+    }
+  }
+
+
   

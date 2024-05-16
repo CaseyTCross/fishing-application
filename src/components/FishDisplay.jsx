@@ -26,8 +26,9 @@ function FishDisplay({ fishObject }) {
     
 
     return (
-        <>
-            <Card className="responsive-card" style={{  margin: '0 auto',  }}>
+        <div className="card-wrapper">
+            <Card className="responsive-card" style={{ margin: '0 auto',   }}>
+                <div>
                 <Table striped bordered hover>
                     <thead>
                         <tr>
@@ -50,7 +51,7 @@ function FishDisplay({ fishObject }) {
                 </Table>
                 {/* <Card.Title>Caught By: {fishObject.fisherman}</Card.Title> */}
                 <Card.Img variant="top" src={fishObject.mainPhotoUrl} onClick={() => openModal(fishObject.mainPhotoUrl)} style={{ width: '90%', margin: '0 auto' }} />
-                <div style={{display: 'flex', margin: '1%',}}>
+                <div style={{display: 'flex', margin: '1%', }}>
                 <Carousel interval={null} style={{ width: '60%', margin: '0' }}>
                     {fishObject.secondaryPhotoUrls.map((image, index) => (
                         <Carousel.Item key={index}>
@@ -104,17 +105,17 @@ function FishDisplay({ fishObject }) {
                 <Card.Text>{fishObject.notes}</Card.Text>
 
                 
-
+                </div>
             </Card>
-            <Modal show={showModal} onHide={closeModal} size="lg">
-                <Modal.Body style={{ display: 'flex', justifyContent: 'center' }}>
+            <Modal show={showModal} onHide={closeModal} size="lg" style={{ backgroundColor: 'rgba(0, 0, 0, 0.3)' }} >
+                <Modal.Body style={{ display: 'flex', justifyContent: 'center', padding: '0' }}>
                     <Image src={selectedImage} fluid style={{ maxHeight: '80vh', maxWidth: '80vw', objectFit: 'contain' }} />
                 </Modal.Body>
-                <Modal.Footer>
+                <Modal.Footer style={{ margin: '0', padding: '0', justifyContent: 'center',  }}>
                     <Button variant="secondary" onClick={closeModal} style={{ fontSize: '1.5rem' }}>Close</Button>
                 </Modal.Footer>
             </Modal>
-        </>
+        </div>
     );
 }
 
