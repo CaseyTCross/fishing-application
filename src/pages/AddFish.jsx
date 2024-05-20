@@ -81,7 +81,7 @@ function AddFish() {
     const [lake, setLake] = useState('');
     const [fishType, setFishType] = useState('');
     const [fishermen, setFishermen] = useState('');
-    const [weatherData, setWeatherData] = useState(null);
+    let weatherData = [];
 
     const fullFishData = {
         mainPhotoUrl: undefined,
@@ -132,6 +132,16 @@ function AddFish() {
     event.preventDefault();
     console.log("Processing Form");
     const formData = new FormData(event.target);
+
+    //start the fetch process for weather data
+    console.log("TESTER-----------------" + lake.lat + lake.lon + formData.get("logWeatherData"));
+    if(formData.get("logWeatherData") === "on" && lake != null )  {
+      console.log("ENTERED THE IF")
+      await fetchWeatherData(lake.lat,lake.lon);
+      console.log("AFTER THE IF");
+  }
+
+
     let mainPhoto = formData.get('main-photo');
     console.log("Test Main Photo: " + mainPhoto);
     //convert heic image if needed.
@@ -162,10 +172,23 @@ function AddFish() {
   console.log(convertedPhotos);
   secondaryPhotos = convertedPhotos;
     
-    //start the fetch process for weather data
-    if(formData.get("logWeatherData") === "on" && lake != null )  {
-        await fetchWeatherData(lake.lat,lake.lon);
-    }
+    
+
+    //Add weather data to fullFishData
+    fullFishData.currentWeatherIconName = weatherData?.current?.icon;
+    fullFishData.currentWeatherIconNum = weatherData?.current?.icon_num;
+    fullFishData.currentTemp = weatherData?.current?.temperature;
+    fullFishData.currentWindSpeed = weatherData?.current?.wind?.speed;
+    fullFishData.currentWindDirection = weatherData?.current?.wind?.dir;
+
+    fullFishData.dayWeatherIconName = weatherData?.daily?.weather;
+    fullFishData.dayWeatherIconNum = weatherData?.daily?.icon;
+    fullFishData.dayWeatherSummary = weatherData?.daily?.summary;
+    fullFishData.dayWeatherTempMin = weatherData?.daily?.all_day?.temperature_min;
+    fullFishData.dayWeatherTempMax = weatherData?.daily?.all_day?.temperature_max;
+    fullFishData.dayWeatherWindSpeed = weatherData?.daily?.all_day?.wind?.speed;
+    fullFishData.dayWeatherWindDirection = weatherData?.daily?.all_day?.wind?.dir;
+    fullFishData.dayWeatherCloudCover = weatherData?.daily?.all_day?.cloud_cover?.total;
 
     //Add all non fetchables to the fullfishdata
     fullFishData.timestamp = Date.now();
@@ -226,20 +249,7 @@ function AddFish() {
     const imageUrl = URL.createObjectURL(mainPhoto);
     console.log({imageUrl});
 
-    fullFishData.currentWeatherIconName = weatherData?.current?.icon;
-    fullFishData.currentWeatherIconNum = weatherData?.current?.icon_num;
-    fullFishData.currentTemp = weatherData?.current?.temperature;
-    fullFishData.currentWindSpeed = weatherData?.current?.wind?.speed;
-    fullFishData.currentWindDirection = weatherData?.current?.wind?.dir;
-
-    fullFishData.dayWeatherIconName = weatherData?.daily?.weather;
-    fullFishData.dayWeatherIconNum = weatherData?.daily?.icon;
-    fullFishData.dayWeatherSummary = weatherData?.daily?.summary;
-    fullFishData.dayWeatherTempMin = weatherData?.daily?.all_day?.temperature_min;
-    fullFishData.dayWeatherTempMax = weatherData?.daily?.all_day?.temperature_max;
-    fullFishData.dayWeatherWindSpeed = weatherData?.daily?.all_day?.wind?.speed;
-    fullFishData.dayWeatherWindDirection = weatherData?.daily?.all_day?.wind?.dir;
-    fullFishData.dayWeatherCloudCover = weatherData?.daily?.all_day?.cloud_cover?.total;
+    
 
     console.log(fullFishData);
 
@@ -262,9 +272,9 @@ function AddFish() {
     await fetch(weatherUrl)
       .then((response) => response.json())
       .then((data) => {
-        setWeatherData({current: data.current, daily: data.daily.data[0]});
+        weatherData =({current: data.current, daily: data.daily.data[0]});
         isWeather = true;
-        console.log(data);
+        console.log("WEATHER DATA LOG::::::::: " + weatherData.current);
 
       })
       .catch((error) => {
@@ -354,3 +364,6 @@ function AddFish() {
 }
 
 export default AddFish;
+
+
+
